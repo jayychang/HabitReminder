@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55F6D58FC362FC94BEDC16FE /* Pods_HabitReminder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90B38295F5E5507AD7C14BD /* Pods_HabitReminder.framework */; };
+		693211531DA817BA00BC6D9E /* CalendarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693211511DA817BA00BC6D9E /* CalendarVC.swift */; };
+		693211541DA817BA00BC6D9E /* CalendarVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693211521DA817BA00BC6D9E /* CalendarVC.xib */; };
+		6932115C1DA827AE00BC6D9E /* CalendarCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6932115B1DA827AE00BC6D9E /* CalendarCell.xib */; };
+		6932115E1DA827D000BC6D9E /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6932115D1DA827D000BC6D9E /* CalendarCell.swift */; };
 		69907DDC1DA6DE28000A4936 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69907DDB1DA6DE28000A4936 /* AppDelegate.swift */; };
 		69907DDE1DA6DE28000A4936 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69907DDD1DA6DE28000A4936 /* ViewController.swift */; };
 		69907DE11DA6DE28000A4936 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69907DDF1DA6DE28000A4936 /* Main.storyboard */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2E41E292F603E318EF4DFAD0 /* Pods-HabitReminder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitReminder.release.xcconfig"; path = "Pods/Target Support Files/Pods-HabitReminder/Pods-HabitReminder.release.xcconfig"; sourceTree = "<group>"; };
+		693211511DA817BA00BC6D9E /* CalendarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarVC.swift; path = ViewController/Calender/CalendarVC.swift; sourceTree = "<group>"; };
+		693211521DA817BA00BC6D9E /* CalendarVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarVC.xib; path = ViewController/Calender/CalendarVC.xib; sourceTree = "<group>"; };
+		6932115B1DA827AE00BC6D9E /* CalendarCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CalendarCell.xib; path = ModelView/CalendarCell.xib; sourceTree = "<group>"; };
+		6932115D1DA827D000BC6D9E /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CalendarCell.swift; path = ModelView/CalendarCell.swift; sourceTree = "<group>"; };
 		69907DD81DA6DE28000A4936 /* HabitReminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitReminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69907DDB1DA6DE28000A4936 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69907DDD1DA6DE28000A4936 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +34,8 @@
 		69907DE51DA6DE28000A4936 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69907DE81DA6DE28000A4936 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69907DEA1DA6DE28000A4936 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		834B248C92519D2729FA2E96 /* Pods-HabitReminder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HabitReminder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HabitReminder/Pods-HabitReminder.debug.xcconfig"; sourceTree = "<group>"; };
+		C90B38295F5E5507AD7C14BD /* Pods_HabitReminder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HabitReminder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +43,55 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55F6D58FC362FC94BEDC16FE /* Pods_HabitReminder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		661792B55682708129165935 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				834B248C92519D2729FA2E96 /* Pods-HabitReminder.debug.xcconfig */,
+				2E41E292F603E318EF4DFAD0 /* Pods-HabitReminder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		693211501DA8179A00BC6D9E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				693211551DA817BE00BC6D9E /* Calendar */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
+		693211551DA817BE00BC6D9E /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				693211521DA817BA00BC6D9E /* CalendarVC.xib */,
+				693211511DA817BA00BC6D9E /* CalendarVC.swift */,
+			);
+			name = Calendar;
+			sourceTree = "<group>";
+		};
+		693211561DA81D6700BC6D9E /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+				6932115B1DA827AE00BC6D9E /* CalendarCell.xib */,
+				6932115D1DA827D000BC6D9E /* CalendarCell.swift */,
+			);
+			name = ModelView;
+			sourceTree = "<group>";
+		};
 		69907DCF1DA6DE27000A4936 = {
 			isa = PBXGroup;
 			children = (
 				69907DDA1DA6DE28000A4936 /* HabitReminder */,
 				69907DD91DA6DE28000A4936 /* Products */,
+				661792B55682708129165935 /* Pods */,
+				A61AAF673443451B952A2407 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,6 +106,8 @@
 		69907DDA1DA6DE28000A4936 /* HabitReminder */ = {
 			isa = PBXGroup;
 			children = (
+				693211561DA81D6700BC6D9E /* ModelView */,
+				693211501DA8179A00BC6D9E /* ViewController */,
 				69907DDB1DA6DE28000A4936 /* AppDelegate.swift */,
 				69907DDD1DA6DE28000A4936 /* ViewController.swift */,
 				69907DDF1DA6DE28000A4936 /* Main.storyboard */,
@@ -67,6 +119,14 @@
 			path = HabitReminder;
 			sourceTree = "<group>";
 		};
+		A61AAF673443451B952A2407 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C90B38295F5E5507AD7C14BD /* Pods_HabitReminder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -74,9 +134,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69907DED1DA6DE28000A4936 /* Build configuration list for PBXNativeTarget "HabitReminder" */;
 			buildPhases = (
+				A4D22D2ED3D30743304C549E /* [CP] Check Pods Manifest.lock */,
 				69907DD41DA6DE27000A4936 /* Sources */,
 				69907DD51DA6DE27000A4936 /* Frameworks */,
 				69907DD61DA6DE27000A4936 /* Resources */,
+				CA0CB9C99ECEC9A58EDF27B6 /* [CP] Embed Pods Frameworks */,
+				E9F3B664CAE1DC1B79BE9971 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,11 +192,61 @@
 			files = (
 				69907DE91DA6DE28000A4936 /* LaunchScreen.storyboard in Resources */,
 				69907DE61DA6DE28000A4936 /* Assets.xcassets in Resources */,
+				693211541DA817BA00BC6D9E /* CalendarVC.xib in Resources */,
 				69907DE11DA6DE28000A4936 /* Main.storyboard in Resources */,
+				6932115C1DA827AE00BC6D9E /* CalendarCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A4D22D2ED3D30743304C549E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CA0CB9C99ECEC9A58EDF27B6 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitReminder/Pods-HabitReminder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E9F3B664CAE1DC1B79BE9971 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HabitReminder/Pods-HabitReminder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		69907DD41DA6DE27000A4936 /* Sources */ = {
@@ -142,7 +255,9 @@
 			files = (
 				69907DDE1DA6DE28000A4936 /* ViewController.swift in Sources */,
 				69907DE41DA6DE28000A4936 /* HabitReminder.xcdatamodeld in Sources */,
+				693211531DA817BA00BC6D9E /* CalendarVC.swift in Sources */,
 				69907DDC1DA6DE28000A4936 /* AppDelegate.swift in Sources */,
+				6932115E1DA827D000BC6D9E /* CalendarCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +301,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -236,6 +352,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -263,7 +380,9 @@
 		};
 		69907DEE1DA6DE28000A4936 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 834B248C92519D2729FA2E96 /* Pods-HabitReminder.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2GYBUXCHXY;
 				INFOPLIST_FILE = HabitReminder/Info.plist;
@@ -276,7 +395,9 @@
 		};
 		69907DEF1DA6DE28000A4936 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2E41E292F603E318EF4DFAD0 /* Pods-HabitReminder.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 2GYBUXCHXY;
 				INFOPLIST_FILE = HabitReminder/Info.plist;
@@ -306,6 +427,7 @@
 				69907DEF1DA6DE28000A4936 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
