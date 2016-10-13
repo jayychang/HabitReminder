@@ -1,0 +1,30 @@
+PODS:
+  - JTAppleCalendar (5.0.1)
+  - Realm (2.0.0):
+    - Realm/Headers (= 2.0.0)
+  - Realm/Headers (2.0.0)
+  - RealmSwift (2.0.0):
+    - Realm (= 2.0.0)
+
+DEPENDENCIES:
+  - JTAppleCalendar (from `https://github.com/patchthecode/JTAppleCalendar.git`, branch `Swift3`)
+  - RealmSwift
+
+EXTERNAL SOURCES:
+  JTAppleCalendar:
+    :branch: Swift3
+    :git: https://github.com/patchthecode/JTAppleCalendar.git
+
+CHECKOUT OPTIONS:
+  JTAppleCalendar:
+    :commit: f7f95b738201bc0a1fdc1d2a4fde75819b466569
+    :git: https://github.com/patchthecode/JTAppleCalendar.git
+
+SPEC CHECKSUMS:
+  JTAppleCalendar: cb2417b1f3367d1993e31720a663646742139a5c
+  Realm: 6dda421ae4b3e9a09742fc2cf4b876d459cbedcd
+  RealmSwift: 7d015f34a2781a50889be9b5a15c36c08597ea0e
+
+PODFILE CHECKSUM: 36aefcbf8925a63ef3ea6b677e9d74f9f7e6593d
+
+COCOAPODS: 1.0.1

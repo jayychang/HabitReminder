@@ -8,5 +8,6 @@ target 'HabitReminder' do
   # Pods for HabitReminder
 
   pod 'JTAppleCalendar', :git => 'https://github.com/patchthecode/JTAppleCalendar.git', :branch => 'Swift3'
+  pod ‘RealmSwift’ 
 
 end

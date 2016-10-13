@@ -8,16 +8,41 @@
 
 import UIKit
 import JTAppleCalendar
+import RealmSwift
 
 class CalendarVC: UIViewController {
 
     @IBOutlet weak var calendarView: JTAppleCalendarView!
+    
+    @IBAction func completed(_ sender: AnyObject) {
+        let realm = try! Realm()
+        
+        try! realm.write {
+            let day = Day()
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "ddMMyyyy"
+            let convertedDate: String = dateFormatter.string(from: Date())
+            
+            day.date = convertedDate
+            day.completed = true
+            print("\(day)")
+            realm.add(day)
+        }
+    }
+    
     let formatter = DateFormatter()
     var testCalendar: Calendar! = Calendar(identifier: .gregorian)
     var numberOfRows = 6
 
+    @IBOutlet weak var monthLabel: UILabel!
+    @IBOutlet weak var yearLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(Realm.Configuration.defaultConfiguration.fileURL)
+
         
         formatter.dateFormat = "yyyy MM dd"
         testCalendar.timeZone = TimeZone(abbreviation: "GMT")!
@@ -40,6 +65,12 @@ class CalendarVC: UIViewController {
 
         calendarView.reloadData()
         
+        // After reloading. Scroll to your selected date, and setup your calendar
+        // After reloading. Scroll to your selected date, and setup your calendar
+        calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false) {
+            let currentDate = self.calendarView.currentCalendarDateSegment()
+            self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,6 +87,14 @@ class CalendarVC: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func setupViewsOfCalendar(_ startDate: Date, endDate: Date) {
+        let month = testCalendar.component(.month, from: startDate)
+        let monthName = DateFormatter().monthSymbols[(month-1) % 12] // 0 indexed array
+        let year = Calendar.current.component(.year, from: startDate)
+        monthLabel.text = monthName
+        yearLabel.text = String(year)
+    }
 }
 
 extension CalendarVC : JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
@@ -69,6 +108,11 @@ extension CalendarVC : JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSourc
     }
     
     func calendar(_ calendar : JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date:Date, cellState: CellState) {
+        
         (cell as? CalendarCell)?.setupCellBeforeDisplay(cellState, date: date)
+    }
+    
+    func calendar(_ calendar : JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
+        setupViewsOfCalendar(startDate, endDate: endDate)
     }
 }

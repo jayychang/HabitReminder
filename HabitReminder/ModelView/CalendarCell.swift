@@ -7,6 +7,7 @@
 //
 
 import JTAppleCalendar
+import RealmSwift
 
 class CalendarCell: JTAppleDayCellView {
 
@@ -20,6 +21,19 @@ class CalendarCell: JTAppleDayCellView {
         
         dayLabel.text =  cellState.text
         configureTextColor(cellState)
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "ddMMyyyy"
+        let convertedDate: String = dateFormatter.string(from: date)
+
+        print("cell date \(convertedDate)")
+        
+        let realm = try! Realm()
+        
+        let tanDogs = realm.objects(Day.self).filter("date == '\(convertedDate)'")
+        
+        print("\(tanDogs.count)")
+
     }
 
     
