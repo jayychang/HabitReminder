@@ -51,7 +51,7 @@ class CalendarVC: UIViewController {
         calendarView.dataSource = self
         
         calendarView.registerCellViewXib(file: "CalendarCell")
-        calendarView.cellInset = CGPoint(x: 0, y: 0)
+//        calendarView.cellInset = CGPoint(x: 0, y: 0)
         
         calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false) {
             let currentDate = self.calendarView.dateSegment()
@@ -71,12 +71,9 @@ class CalendarVC: UIViewController {
     func setupViewsOfCalendar(_ startDate: Date, endDate: Date, month: Int) {
         let Month = testCalendar.component(.month, from: startDate)
         let monthName = DateFormatter().monthSymbols[(Month-1) % 12]
-        // 0 indexed array
         let year = Calendar.current.component(.year, from: startDate)
-//        monthLabel.text = monthName + " " + String(year)
         
-                monthLabel.text = monthName
-                yearLabel.text = String(year)
+        monthLabel.text = monthName + " " + String(year)
     }
 
 }
