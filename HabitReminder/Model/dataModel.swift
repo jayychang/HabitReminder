@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  dataModel.swift
 //  HabitReminder
 //
 //  Created by jay★ on 2016-10-11.

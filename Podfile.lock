@@ -7,17 +7,17 @@ PODS:
     - Realm (= 2.0.2)
 
 DEPENDENCIES:
-  - JTAppleCalendar (from `https://github.com/patchthecode/JTAppleCalendar.git`, branch `Swift3`)
+  - JTAppleCalendar (from `https://github.com/patchthecode/JTAppleCalendar.git`, branch `DynamicGeneration`)
   - RealmSwift
 
 EXTERNAL SOURCES:
   JTAppleCalendar:
-    :branch: Swift3
+    :branch: DynamicGeneration
     :git: https://github.com/patchthecode/JTAppleCalendar.git
 
 CHECKOUT OPTIONS:
   JTAppleCalendar:
-    :commit: f7f95b738201bc0a1fdc1d2a4fde75819b466569
+    :commit: 914c5d1f50c9b77a459b49dd8b4515c03546fdfb
     :git: https://github.com/patchthecode/JTAppleCalendar.git
 
 SPEC CHECKSUMS:
@@ -25,6 +25,6 @@ SPEC CHECKSUMS:
   Realm: 0f5a194af0b7e6158b83db41b4ee1a00be7ddf1a
   RealmSwift: 0eb5070d851cba7c66e841ca756d83609dc78bc8
 
-PODFILE CHECKSUM: 9083c1d1314993d86c366518e3ea7a3ff3b54c97
+PODFILE CHECKSUM: fca92edd10925d67f9522e9f0ad00855a05470d2
 
 COCOAPODS: 1.0.1

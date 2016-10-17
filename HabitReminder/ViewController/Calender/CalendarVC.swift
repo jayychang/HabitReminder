@@ -12,6 +12,9 @@ import RealmSwift
 
 class CalendarVC: UIViewController {
 
+    let formatter = DateFormatter()
+    var testCalendar: Calendar! = Calendar(identifier: .gregorian)
+    
     @IBOutlet weak var calendarView: JTAppleCalendarView!
     
     @IBAction func completed(_ sender: AnyObject) {
@@ -20,9 +23,9 @@ class CalendarVC: UIViewController {
         try! realm.write {
             let day = Day()
             
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "ddMMyyyy"
-            let convertedDate: String = dateFormatter.string(from: Date())
+//            let dateFormatter = DateFormatter()
+//            dateFormatter.dateFormat = "yyyy MM dd"
+            let convertedDate: String = formatter.string(from: Date())
             
             day.date = convertedDate
             day.completed = true
@@ -31,9 +34,7 @@ class CalendarVC: UIViewController {
         }
     }
     
-    let formatter = DateFormatter()
-    var testCalendar: Calendar! = Calendar(identifier: .gregorian)
-    var numberOfRows = 6
+
 
     @IBOutlet weak var monthLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
@@ -43,33 +44,22 @@ class CalendarVC: UIViewController {
         super.viewDidLoad()
         print(Realm.Configuration.defaultConfiguration.fileURL)
 
-        
         formatter.dateFormat = "yyyy MM dd"
         testCalendar.timeZone = TimeZone(abbreviation: "GMT")!
-
+        
         calendarView.delegate = self
         calendarView.dataSource = self
         
-        self.calendarView.registerCellViewXib(fileName: "CalendarCell")
-
-        // Do any additional setup after loading the view.
+        calendarView.registerCellViewXib(file: "CalendarCell")
+        calendarView.cellInset = CGPoint(x: 0, y: 0)
         
-        calendarView.direction = .horizontal                                 // default is horizontal
-        calendarView.cellInset = CGPoint(x: 0, y: 0)                         // default is (3,3)
-        calendarView.allowsMultipleSelection = false                         // default is false
-        calendarView.firstDayOfWeek = .sunday                                // default is Sunday
-        calendarView.scrollEnabled = true                                    // default is true
-        calendarView.scrollingMode = .stopAtEachCalendarFrameWidth           // default is .StopAtEachCalendarFrameWidth
-        calendarView.itemSize = nil                                          // default is nil. Use a value here to change the size of your cells
-        calendarView.rangeSelectionWillBeUsed = false                        // default is false
-
-        calendarView.reloadData()
-        
-        // After reloading. Scroll to your selected date, and setup your calendar
-        // After reloading. Scroll to your selected date, and setup your calendar
         calendarView.scrollToDate(Date(), triggerScrollToDateDelegate: false, animateScroll: false) {
-            let currentDate = self.calendarView.currentCalendarDateSegment()
-            self.setupViewsOfCalendar(currentDate.dateRange.start, endDate: currentDate.dateRange.end)
+            let currentDate = self.calendarView.dateSegment()
+            self.setupViewsOfCalendar(
+                currentDate.range.start,
+                endDate: currentDate.range.end,
+                month: currentDate.month
+            )
         }
     }
 
@@ -78,41 +68,62 @@ class CalendarVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    func setupViewsOfCalendar(_ startDate: Date, endDate: Date) {
-        let month = testCalendar.component(.month, from: startDate)
-        let monthName = DateFormatter().monthSymbols[(month-1) % 12] // 0 indexed array
+    func setupViewsOfCalendar(_ startDate: Date, endDate: Date, month: Int) {
+        let Month = testCalendar.component(.month, from: startDate)
+        let monthName = DateFormatter().monthSymbols[(Month-1) % 12]
+        // 0 indexed array
         let year = Calendar.current.component(.year, from: startDate)
-        monthLabel.text = monthName
-        yearLabel.text = String(year)
+//        monthLabel.text = monthName + " " + String(year)
+        
+                monthLabel.text = monthName
+                yearLabel.text = String(year)
     }
+
 }
 
 extension CalendarVC : JTAppleCalendarViewDelegate, JTAppleCalendarViewDataSource {
     
-    func configureCalendar(_ calendar: JTAppleCalendarView) -> (startDate: Date, endDate: Date, numberOfRows: Int, calendar: Calendar) {
-        
-        let firstDate = formatter.date(from: "2016 01 01")
-        let secondDate = Date()
-        let aCalendar = Calendar.current
-        return (startDate: firstDate!, endDate: secondDate, numberOfRows: numberOfRows, calendar: aCalendar)
+    func configureCalendar(_ calendar: JTAppleCalendarView) ->
+        ConfigurationParameters {
+
+//            let startDate = Calendar.current.date(byAdding: .year, value: -1, to: Date())!
+//            let startString = formatter.string(from: start)
+//            let startDate = formatter.date(from: startString)!
+
+//            let endDate = Calendar.current.date(byAdding: .year, value: 1, to: Date())!
+//            let endString = formatter.string(from: end)
+//            let endDate = formatter.date(from: endString)!
+//            formatter.dateFormat = "yyyy MM dd"
+//            let convertedDate: String = dateFormatter.string(from: Date())
+            
+//            print("DATEEEEEEEE \(startDate)")
+            let startDate = formatter.date(from: "2000 01 01")!
+            let endDate = formatter.date(from: "2030 09 20")!
+//            formatter.date(from: startDate as NSString)
+            let calendar = Calendar.current
+            
+            let parameters = ConfigurationParameters(
+                startDate: startDate,
+                endDate: endDate,
+                numberOfRows: 6,
+                calendar: calendar,
+                generateInDates: .forAllMonths,
+                generateOutDates: .tillEndOfRow,
+                firstDayOfWeek: .sunday
+            )
+            return parameters
     }
     
-    func calendar(_ calendar : JTAppleCalendarView, isAboutToDisplayCell cell: JTAppleDayCellView, date:Date, cellState: CellState) {
-        
+    func calendar(_ calendar: JTAppleCalendarView,
+                  willDisplayCell cell: JTAppleDayCellView,
+                  date: Date, cellState: CellState) {
         (cell as? CalendarCell)?.setupCellBeforeDisplay(cellState, date: date)
     }
     
-    func calendar(_ calendar : JTAppleCalendarView, didScrollToDateSegmentStartingWithdate startDate: Date, endingWithDate endDate: Date) {
-        setupViewsOfCalendar(startDate, endDate: endDate)
+    func calendar(_ calendar: JTAppleCalendarView,
+                  didScrollToDateSegmentFor range: (start: Date, end: Date),
+                  belongingTo month: Int, rows: Int) {
+        setupViewsOfCalendar(range.start, endDate: range.end, month: month)
     }
+    
 }
