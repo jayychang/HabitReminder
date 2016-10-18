@@ -12,6 +12,7 @@ import RealmSwift
 class CalendarCell: JTAppleDayCellView {
 
     @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var completionLabel: UILabel!
     @IBOutlet weak var background: UIView!
 
     var normalDayColor = UIColor.black
@@ -19,9 +20,6 @@ class CalendarCell: JTAppleDayCellView {
     
     
     func setupCellBeforeDisplay(_ cellState: CellState, date: Date) {
-        
-//        background.layer.masksToBounds = true
-//        background.layer.cornerRadius = background.frame.width / 2
         
         configureBackgroundAlpha(cellState)
         
@@ -40,20 +38,21 @@ class CalendarCell: JTAppleDayCellView {
         if day.count > 0 {
             configureCompletion(completion: (day.first?.completed)!)
         } else {
-            dayLabel.font = UIFont(name: "Helvetica-Light", size: 20)
-            dayLabel.textColor = UIColor.black
-            dayLabel.text =  cellState.text
+            completionLabel.text = ""
         }
+        dayLabel.textColor = UIColor.black
+        dayLabel.text =  cellState.text
     }
 
     func configureCompletion ( completion: Bool) {
-        dayLabel.font = UIFont(name: "Zapf Dingbats", size: 40)
         if completion == true {
-            dayLabel.textColor = UIColor.green
-            dayLabel.text = "✔"
+            completionLabel.textColor = UIColor.green
+            completionLabel.text = "✔"
+        } else if completion == false {
+            completionLabel.textColor = UIColor.red
+            completionLabel.text = "✘"
         } else {
-            dayLabel.textColor = UIColor.red
-            dayLabel.text = "✘"
+            completionLabel.text = ""
         }
     }
     
